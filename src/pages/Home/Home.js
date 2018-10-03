@@ -34,6 +34,15 @@ const Home = inject("TodoStore")(
             </div>
             <div className="todos-container">
               <div id="progress-container">
+                <div
+                  id="progress-bar-complete"
+                  style={{ width: TodoStore.todosProgress * 100 + "%" }}
+                />
+                <div
+                  id="progress-bar-incomplete"
+                  style={{ width: (1 - TodoStore.todosProgress) * 100 + "%" }}
+                />
+                <div className="cf" />
                 <h1>
                   Status: {TodoStore.todosCompleted} / {TodoStore.todosTotal}{" "}
                   completed

@@ -159,3 +159,17 @@ li {
 .btn-control:focus * {
   color: #fff;
 }
+#progress-bar-complete {
+  height: 20px;
+  background: green;
+  transition: all 350ms;
+  margin: 20px 0;
+  float: left;
+}
+#progress-bar-incomplete {
+  height: 20px;
+  background: red;
+  transition: all 350ms;
+  margin: 20px 0;
+  float: right;
+}
