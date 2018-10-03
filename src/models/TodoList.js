@@ -19,9 +19,16 @@ const Todo = types
 // Todo list model
 const TodoList = types
   .model({
+    isFetching: false,
     todos: types.array(Todo)
   })
   .actions(self => ({
+    startFetching() {
+      self.isFetching = true;
+    },
+    stopFetching() {
+      self.isFetching = false;
+    },
     addTodo(name) {
       self.todos.push({ id: nextId, name: name });
       nextId++;

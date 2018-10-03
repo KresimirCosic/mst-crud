@@ -33,7 +33,7 @@ const Home = inject("TodoStore")(
               </form>
             </div>
             <div className="todos-container">
-              <div id="progress-container">
+              <div id="progress-container" className="animated flipInX">
                 <div
                   id="progress-bar-complete"
                   style={{ width: TodoStore.todosProgress * 100 + "%" }}
@@ -77,11 +77,19 @@ const Home = inject("TodoStore")(
                   </button>
                 </div>
               </div>
-              <ul>
-                {TodoStore.todos.map(todo => (
-                  <Todo key={todo.id} todo={todo} />
-                ))}
-              </ul>
+              {TodoStore.isFetching ? (
+                <img
+                  className="loading-gif"
+                  src={require("../../assets/images/loading.gif")}
+                  alt="Loading"
+                />
+              ) : (
+                <ul>
+                  {TodoStore.todos.map(todo => (
+                    <Todo key={todo.id} todo={todo} />
+                  ))}
+                </ul>
+              )}
             </div>
           </div>
         );

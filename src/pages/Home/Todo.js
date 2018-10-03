@@ -48,9 +48,9 @@ const Todo = inject("TodoStore")(
               <div className="controls-container">
                 <button className="completed-state" onClick={todo.toggle}>
                   {todo.completed ? (
-                    <i className="fas fa-check green" />
+                    <i className="fas fa-check green animated infinite pulse" />
                   ) : (
-                    <i className="fas fa-times red" />
+                    <i className="fas fa-times red animated infinite pulse" />
                   )}
                 </button>
                 <button className="delete-todo" onClick={this.handleRemoveTodo}>
