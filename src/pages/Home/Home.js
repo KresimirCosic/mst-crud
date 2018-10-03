@@ -2,13 +2,17 @@
 import React, { Component } from "react";
 // MobX React
 import { inject, observer } from "mobx-react";
+// Components
+import TodoItemView from "./TodoItemView";
 
 const Home = inject("TodoStore")(
   observer(
     class Home extends Component {
       handleTodoSubmit = event => {
         event.preventDefault();
-        console.log("New Todo submitted.");
+        if (this.todoInputValue.value !== "") {
+          this.props.TodoStore.addTodo(this.todoInputValue.value);
+        }
       };
 
       render() {
@@ -18,25 +22,27 @@ const Home = inject("TodoStore")(
           <div className="crud-container">
             <div className="input-container">
               <form onSubmit={this.handleTodoSubmit}>
-                <input id="todoInput" type="text" placeholder="Todo" />
+                <input
+                  ref={inp => (this.todoInputValue = inp)}
+                  id="todoInput"
+                  type="text"
+                  placeholder="Todo"
+                />
                 <input id="todoSubmit" type="submit" value="Add" />
               </form>
             </div>
-            <h1>
-              {TodoStore.todosCompleted} / {TodoStore.todosTotal}
-            </h1>
-            <ul>
-              {TodoStore.todos.map((todo, i) => (
-                <li key={i}>
-                  <div className="single-todo animated bounceIn">
-                    <h4>
-                      {todo.name} ({todo.id})
-                      <button className="deleteTodo">X</button>
-                    </h4>
-                  </div>
-                </li>
-              ))}
-            </ul>
+            <div className="todos-container">
+              <div id="progress-container">
+                <h1>
+                  {TodoStore.todosCompleted} / {TodoStore.todosTotal}
+                </h1>
+              </div>
+              <ul>
+                {TodoStore.todos.map(todo => (
+                  <TodoItemView key={todo.id} todo={todo} />
+                ))}
+              </ul>
+            </div>
           </div>
         );
       }

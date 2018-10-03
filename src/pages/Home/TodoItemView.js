@@ -1,0 +1,70 @@
+// React
+import React, { Component } from "react";
+// MobX React
+import { inject, observer } from "mobx-react";
+
+const TodoItemView = inject("TodoStore")(
+  observer(
+    class TodoItemView extends Component {
+      state = {
+        deleting: false,
+        deletingClasses: [
+          "zoomOut",
+          "zoomOutLeft",
+          "zoomOutRight",
+          "bounceOut",
+          "bounceOutLeft",
+          "bounceOutRight"
+        ]
+      };
+
+      getAppropriateClass = () => {
+        const indexOfRandomClass = Math.floor(
+          Math.random() * this.state.deletingClasses.length
+        );
+        return this.state.deleting
+          ? this.state.deletingClasses[indexOfRandomClass]
+          : "bounceIn";
+      };
+
+      handleRemoveTodo = () => {
+        this.setState({
+          deleting: true
+        });
+        setTimeout(() => {
+          this.props.TodoStore.removeTodo(this.props.todo.id);
+        }, 1000);
+      };
+
+      render() {
+        const { todo } = this.props;
+
+        return (
+          <li>
+            <div
+              className={"single-todo animated " + this.getAppropriateClass()}
+            >
+              <h4 className="todo-name">
+                {todo.name} ({todo.id})
+              </h4>
+              <div className="controls-container">
+                <button className="completed-state" onClick={todo.toggle}>
+                  {todo.completed ? (
+                    <i className="fas fa-check green" />
+                  ) : (
+                    <i className="fas fa-times red" />
+                  )}
+                </button>
+                <button className="delete-todo" onClick={this.handleRemoveTodo}>
+                  X
+                </button>
+              </div>
+            </div>
+          </li>
+        );
+      }
+    }
+  )
+);
+
+export default TodoItemView;

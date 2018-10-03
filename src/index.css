@@ -76,3 +76,58 @@ li {
   background: #007aff;
   color: #fff;
 }
+#progress-container {
+  text-align: center;
+}
+.single-todo {
+  padding: 5px 10px;
+  border-radius: 5px;
+  border-bottom: 5px solid #ddd;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.single-todo:not(last-child) {
+  margin-bottom: 30px;
+}
+.delete-todo {
+  transition: all 350ms;
+  font-weight: 700;
+  font-size: 36px;
+  cursor: pointer;
+  background: transparent;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+.delete-todo:hover,
+.delete-todo:focus {
+  color: #fff;
+  background: #007aff;
+  border-color: #007aff;
+}
+.todo-name::first-letter {
+  text-transform: capitalize;
+}
+.controls-container {
+  display: flex;
+  align-items: center;
+}
+.red {
+  color: red;
+}
+.green {
+  color: green;
+}
+.completed-state {
+  font-size: 36px;
+  margin-right: 10px;
+  background: transparent;
+  transition: all 350ms;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.completed-state:hover,
+.completed-state:focus {
+  background: #fff;
+}

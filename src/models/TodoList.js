@@ -1,6 +1,8 @@
 // MobX State Tree
 import { types } from "mobx-state-tree";
 
+let nextId = 0;
+
 // Single todo model
 const Todo = types
   .model("Todo", {
@@ -21,8 +23,12 @@ const TodoList = types
   })
   .actions(self => ({
     addTodo(name) {
-      const nextId = self.todos.length;
       self.todos.push({ id: nextId, name: name });
+      nextId++;
+    },
+    removeTodo(id) {
+      const index = self.todos.map(todo => todo.id).indexOf(id);
+      self.todos.splice(index, 1);
     }
   }))
   .views(self => ({
