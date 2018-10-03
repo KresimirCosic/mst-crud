@@ -9,12 +9,16 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 // React DOM
 import ReactDOM from "react-dom";
 // Styles
+import "normalize.css";
+import "animate.css";
 import "./index.css";
+// Stores
+import TodoStore from "./stores/TodoStore";
 // Pages
 import Home from "./pages/Home/Home";
 
 const AppRoot = (
-  <Provider>
+  <Provider TodoStore={TodoStore}>
     <Router>
       <Switch>
         <Route path="/" exact component={Home} />
