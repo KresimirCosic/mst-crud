@@ -60,6 +60,9 @@ const Home = inject("TodoStore")(
                   >
                     Mark all as <strong>incompleted</strong>
                   </button>
+                  <button className="btn-control" onClick={TodoStore.toggleAll}>
+                    Toggle all (<strong>reverse</strong>)
+                  </button>
                   <button
                     className="btn-control"
                     onClick={TodoStore.deleteAllWhichAreCompleted}

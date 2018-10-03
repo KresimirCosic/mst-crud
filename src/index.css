@@ -25,6 +25,11 @@ ul {
 li {
   list-style: none;
 }
+.cf {
+  clear: both;
+  display: table;
+  content: " ";
+}
 .crud-container {
   transition: all 350ms;
   z-index: 9;
@@ -136,7 +141,7 @@ li {
   justify-content: space-between;
 }
 .btn-control {
-  width: 25%;
+  width: 20%;
   padding: 5px 10px;
   background: transparent;
   border: 1px solid #ddd;
@@ -172,4 +177,36 @@ li {
   transition: all 350ms;
   margin: 20px 0;
   float: right;
+}
+
+@media only screen and (max-width: 767px) {
+  body {
+    padding: 70px 40px;
+  }
+  .multi-controls-container {
+    flex-direction: column;
+  }
+  .btn-control {
+    width: 100%;
+  }
+  .btn-control:not(:last-child) {
+    margin-bottom: 10px;
+  }
+}
+@media only screen and (max-width: 479px) {
+  body {
+    padding: 35px 20px;
+  }
+  .single-todo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  #todoInput,
+  #todoSubmit {
+    display: block;
+    width: 100%;
+    margin-bottom: 10px;
+  }
 }
