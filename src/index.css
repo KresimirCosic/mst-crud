@@ -5,7 +5,7 @@ body {
   font-family: "Raleway", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  height: 100%;
+  min-height: 100vh;
   background: linear-gradient(to bottom, #eee, #ccc);
 }
 html > body * {
@@ -33,14 +33,14 @@ li {
   background: linear-gradient(to bottom, #eee, #fff);
   border-radius: 20px;
   padding: 20px 40px;
-  -webkit-box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.3);
-  -moz-box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.3);
-  box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.3);
+  -webkit-box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.8);
+  -moz-box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.8);
+  box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.8);
 }
 .crud-container:hover {
-  -webkit-box-shadow: 0px 10px 20px 0px rgba(0, 0, 0, 0.1);
-  -moz-box-shadow: 0px 10px 20px 0px rgba(0, 0, 0, 0.1);
-  box-shadow: 0px 10px 20px 0px rgba(0, 0, 0, 0.1);
+  -webkit-box-shadow: 0px 10px 20px 0px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: 0px 10px 20px 0px rgba(0, 0, 0, 0.5);
+  box-shadow: 0px 10px 20px 0px rgba(0, 0, 0, 0.5);
 }
 #todoInput {
   padding: 10px 20px;
@@ -130,4 +130,32 @@ li {
 .completed-state:hover,
 .completed-state:focus {
   background: #fff;
+}
+.multi-controls-container {
+  display: flex;
+  justify-content: space-between;
+}
+.btn-control {
+  width: 25%;
+  padding: 5px 10px;
+  background: transparent;
+  border: 1px solid #ddd;
+  transition: all 350ms;
+  font-size: 16px;
+  cursor: pointer;
+}
+.btn-control:first-child {
+  border-radius: 5px 0 0 5px;
+}
+.btn-control:last-child {
+  border-radius: 0 5px 5px 0;
+}
+.btn-control:hover,
+.btn-control:focus {
+  background: #007aff;
+  color: #fff;
+}
+.btn-control:hover *,
+.btn-control:focus * {
+  color: #fff;
 }

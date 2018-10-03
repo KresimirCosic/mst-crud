@@ -3,7 +3,7 @@ import React, { Component } from "react";
 // MobX React
 import { inject, observer } from "mobx-react";
 // Components
-import TodoItemView from "./TodoItemView";
+import Todo from "./Todo";
 
 const Home = inject("TodoStore")(
   observer(
@@ -13,6 +13,7 @@ const Home = inject("TodoStore")(
         if (this.todoInputValue.value !== "") {
           this.props.TodoStore.addTodo(this.todoInputValue.value);
         }
+        this.todoInputValue.value = "";
       };
 
       render() {
@@ -34,12 +35,39 @@ const Home = inject("TodoStore")(
             <div className="todos-container">
               <div id="progress-container">
                 <h1>
-                  {TodoStore.todosCompleted} / {TodoStore.todosTotal}
+                  Status: {TodoStore.todosCompleted} / {TodoStore.todosTotal}{" "}
+                  completed
                 </h1>
+                <div className="multi-controls-container">
+                  <button
+                    className="btn-control"
+                    onClick={TodoStore.toggleAllComplete}
+                  >
+                    Mark all as <strong>completed</strong>
+                  </button>
+                  <button
+                    className="btn-control"
+                    onClick={TodoStore.toggleAllIncomplete}
+                  >
+                    Mark all as <strong>incompleted</strong>
+                  </button>
+                  <button
+                    className="btn-control"
+                    onClick={TodoStore.deleteAllWhichAreCompleted}
+                  >
+                    Delete all <strong>completed</strong>
+                  </button>
+                  <button
+                    className="btn-control"
+                    onClick={TodoStore.deleteAllWhichAreIncompleted}
+                  >
+                    Delete all <strong>incompleted</strong>
+                  </button>
+                </div>
               </div>
               <ul>
                 {TodoStore.todos.map(todo => (
-                  <TodoItemView key={todo.id} todo={todo} />
+                  <Todo key={todo.id} todo={todo} />
                 ))}
               </ul>
             </div>

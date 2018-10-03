@@ -3,7 +3,7 @@ import React, { Component } from "react";
 // MobX React
 import { inject, observer } from "mobx-react";
 
-const TodoItemView = inject("TodoStore")(
+const Todo = inject("TodoStore")(
   observer(
     class TodoItemView extends Component {
       state = {
@@ -44,9 +44,7 @@ const TodoItemView = inject("TodoStore")(
             <div
               className={"single-todo animated " + this.getAppropriateClass()}
             >
-              <h4 className="todo-name">
-                {todo.name} ({todo.id})
-              </h4>
+              <h4 className="todo-name">{todo.name}</h4>
               <div className="controls-container">
                 <button className="completed-state" onClick={todo.toggle}>
                   {todo.completed ? (
@@ -67,4 +65,4 @@ const TodoItemView = inject("TodoStore")(
   )
 );
 
-export default TodoItemView;
+export default Todo;

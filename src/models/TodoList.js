@@ -29,6 +29,23 @@ const TodoList = types
     removeTodo(id) {
       const index = self.todos.map(todo => todo.id).indexOf(id);
       self.todos.splice(index, 1);
+    },
+    toggleAll() {
+      self.todos.forEach(todo => (todo.completed = !todo.completed));
+    },
+    toggleAllComplete() {
+      self.todos.forEach(todo => (todo.completed = true));
+    },
+    toggleAllIncomplete() {
+      self.todos.forEach(todo => (todo.completed = false));
+    },
+    deleteAllWhichAreCompleted() {
+      let todosIncomplete = self.todos.filter(todo => todo.completed);
+      todosIncomplete.forEach(todo => this.removeTodo(todo.id));
+    },
+    deleteAllWhichAreIncompleted() {
+      let todosComplete = self.todos.filter(todo => !todo.completed);
+      todosComplete.forEach(todo => this.removeTodo(todo.id));
     }
   }))
   .views(self => ({
