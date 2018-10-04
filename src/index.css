@@ -54,12 +54,23 @@ li {
   border: 1px solid #ddd;
   border-radius: 10px 0 0 10px;
   outline: none;
+  margin-bottom: 10px;
 }
-#todoInput::placeholder {
+#todoFilter {
+  padding: 10px 20px;
+  width: 100%;
+  font-size: 36px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  outline: none;
+}
+#todoInput::placeholder,
+#todoFilter::placeholder {
   color: #eee;
   font-style: italic;
 }
-#todoInput:focus {
+#todoInput:focus,
+#todoFilter:focus {
   border: 1px solid #aaa;
 }
 #todoSubmit {

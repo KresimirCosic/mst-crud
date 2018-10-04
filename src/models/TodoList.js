@@ -20,6 +20,7 @@ const Todo = types
 const TodoList = types
   .model({
     isFetching: false,
+    filter: "",
     todos: types.array(Todo)
   })
   .actions(self => ({
@@ -28,6 +29,9 @@ const TodoList = types
     },
     stopFetching() {
       self.isFetching = false;
+    },
+    setFilterValue(value) {
+      self.filter = value;
     },
     addTodo(name) {
       self.todos.push({ id: nextId, name: name });
@@ -65,6 +69,11 @@ const TodoList = types
     get todosProgress() {
       return (
         self.todos.filter(todo => todo.completed).length / self.todos.length
+      );
+    },
+    get filterByString() {
+      return self.todos.filter(todo =>
+        todo.name.toLowerCase().includes(self.filter.toLowerCase())
       );
     }
   }));

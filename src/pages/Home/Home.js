@@ -16,6 +16,10 @@ const Home = inject("TodoStore")(
         this.todoInputValue.value = "";
       };
 
+      handleTodoFilter = event => {
+        this.props.TodoStore.setFilterValue(event.target.value);
+      };
+
       render() {
         const { TodoStore } = this.props;
 
@@ -31,6 +35,12 @@ const Home = inject("TodoStore")(
                 />
                 <input id="todoSubmit" type="submit" value="Add" />
               </form>
+              <input
+                onChange={this.handleTodoFilter}
+                id="todoFilter"
+                ref={inp => (this.todoFilterValue = inp)}
+                placeholder="Filter by..."
+              />
             </div>
             <div className="todos-container">
               <div id="progress-container" className="animated flipInX">
@@ -85,7 +95,7 @@ const Home = inject("TodoStore")(
                 />
               ) : (
                 <ul>
-                  {TodoStore.todos.map(todo => (
+                  {TodoStore.filterByString.map(todo => (
                     <Todo key={todo.id} todo={todo} />
                   ))}
                 </ul>
