@@ -13,6 +13,9 @@ const Todo = types
   .actions(self => ({
     toggle() {
       self.completed = !self.completed;
+    },
+    updateName(newName) {
+      self.name = newName;
     }
   }));
 

@@ -3,7 +3,7 @@ import React, { Component } from "react";
 // MobX React
 import { inject, observer } from "mobx-react";
 // Components
-import Todo from "./Todo";
+import Todo from "../../components/Todo";
 
 const Home = inject("TodoStore")(
   observer(

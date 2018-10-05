@@ -134,6 +134,69 @@ li {
 .green {
   color: green;
 }
+.edit-button {
+  font-size: 36px;
+  margin-right: 10px;
+  background: transparent;
+  transition: all 350ms;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.editting-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 11;
+  background: rgba(255, 255, 255, 0.85);
+  padding: 20px 40px;
+  border-radius: 10px;
+  max-width: 400px;
+}
+.update-input {
+  display: block;
+  width: 100%;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  padding: 5px 10px;
+  border: 1px solid #ddd;
+  font-weight: 700;
+}
+.update-input::placeholder {
+  color: #ddd;
+  font-style: italic;
+}
+.cancel-edit,
+.update-edit {
+  display: block;
+  width: 100%;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  padding: 5px 10px;
+  transition: all 350ms;
+  background: #fff;
+  color: #007aff;
+  cursor: pointer;
+  border: 1px solid #ddd;
+  font-weight: 700;
+}
+.cancel-edit:hover,
+.cancel-edit:focus,
+.update-edit:hover,
+.update-edit:focus {
+  color: #fff;
+  background: #007aff;
+}
+.overlay {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 10;
+}
 .completed-state {
   font-size: 36px;
   margin-right: 10px;
@@ -144,7 +207,9 @@ li {
   cursor: pointer;
 }
 .completed-state:hover,
-.completed-state:focus {
+.completed-state:focus,
+.edit-button:hover,
+.edit-button:focus {
   background: #fff;
 }
 .multi-controls-container {
@@ -223,5 +288,8 @@ li {
     display: block;
     width: 100%;
     margin-bottom: 10px;
+  }
+  .editting-container {
+    padding: 20px 20px;
   }
 }
